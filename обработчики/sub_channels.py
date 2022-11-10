@@ -239,7 +239,7 @@ async def del_callback_run(call: types.CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(lambda x: x.data and x.data.startswith('edit_wv '))
 async def del_callback_run(call: types.CallbackQuery, state: FSMContext):
     await bot.delete_message(call.from_user.id, call.message.message_id)
-    db.sql_delete_channel_without_verif(call.data.replace('del_wv ', ''))
+    db.sql_delete_channel_without_verif(call.data.replace('edit_wv ', ''))
     await call.answer('Канал удален')
     await call.message.answer(var.wel_subscription,reply_markup=db.adm_channel_read())
 
